@@ -21,6 +21,10 @@ export class IGTComponent {
   ])
 
   valorCostasDasCartas = signal('back')
+  perdasOuGanhos = signal({
+    ganhos: 0,
+    perdas: 0
+  })
 
   getRandomBackImg(){
     const index = Math.floor(Math.random() * BackCards.length);
