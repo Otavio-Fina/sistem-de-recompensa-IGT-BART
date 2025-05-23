@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  constructor(private readonly router: Router){}
 
+  navigateBalatro(){
+    this.router.navigate(['IGT'])
+  }
+
+  navigateBalloon(){
+    this.router.navigate(['BART'])
+  }
 }
