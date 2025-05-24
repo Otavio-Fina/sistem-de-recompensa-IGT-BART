@@ -1,22 +1,44 @@
-<div class="w-full h-[100vh] flex justify-center items-center flex-row gap-[5vw] flex-wrap font-manrope font-bold">
-    <div class="flex justify-center items-center flex-row gap-[5vw] flex-wrap">
-        <div class="w-80 h-[450px] overflow-hidden shadow-lg bg-card-opaco flex flex-col justify-center items-center rounded-lg 
+<div class="flex justify-center items-center h-screen w-screen relative">
+    <div class="w-full  justify-center items-center grid  px-5 grid-cols-2 md:grid-cols-4 gap-[5vw] font-manrope font-bold">
+    
+        <div class="img1 w-full max-w-80 py-5 overflow-hidden shadow-lg bg-card-opaco flex flex-col justify-center items-center rounded-lg 
         border-card-opaco duration-200 ease-in-out hover:scale-105 active:scale-95" (click)="getSelectedValue(0)">
             <img class="w-5/6 opacity-85" [src]="img()[0]" alt="Sunset in the mountains">
         </div>
-        <div class="w-80 h-[450px] overflow-hidden shadow-lg bg-card-opaco flex flex-col justify-center items-center rounded-lg 
+        <div class="img2 w-full max-w-80 py-5 overflow-hidden shadow-lg bg-card-opaco flex flex-col justify-center items-center rounded-lg 
         border-card-opaco duration-200 ease-in-out hover:scale-105 active:scale-95" (click)="getSelectedValue(1)">
             <img class="w-5/6 opacity-85" [src]="img()[1]" alt="Sunset in the mountains">
         </div>
-    </div>
-    <div class="flex justify-center items-center flex-row gap-[5vw] flex-wrap">
-        <div class="w-80 h-[450px] overflow-hidden shadow-lg bg-card-opaco flex flex-col justify-center items-center rounded-lg 
+    
+    
+        <div class="img3 w-full max-w-80 py-5 overflow-hidden shadow-lg bg-card-opaco flex flex-col justify-center items-center rounded-lg 
         border-card-opaco duration-200 ease-in-out hover:scale-105 active:scale-95" (click)="getSelectedValue(2)">
-        <img class="w-5/6 opacity-85" [src]="img()[2]" alt="Sunset in the mountains">
+            <img class="w-5/6 opacity-85" [src]="img()[2]" alt="Sunset in the mountains">
         </div>
-        <div class="w-80 h-[450px] overflow-hidden shadow-lg bg-card-opaco flex flex-col justify-center items-center rounded-lg 
+        <div class="img4 w-full max-w-80 py-5 overflow-hidden shadow-lg bg-card-opaco flex flex-col justify-center items-center rounded-lg 
         border-card-opaco duration-200 ease-in-out hover:scale-105 active:scale-95" (click)="getSelectedValue(3)">
             <img class="w-5/6 opacity-85" [src]="img()[3]" alt="Sunset in the mountains">
         </div>
+    </div>
+
+
+
+
+    <div class="w-full h-20 absolute bottom-0 bg-black opacity-90 border border-t-white text-white text-2xl font-semibold flex justify-center items-center duration-700 ease-in-out
+    tracking-wider" 
+    [ngClass]="{
+        '!border-t-green-200 !text-green-200': 0 < perdasOuGanhos().ganhos - perdasOuGanhos().perdas && perdasOuGanhos().ganhos - perdasOuGanhos().perdas <= 500 ,
+        '!border-t-green-400 !text-green-400': 500 < perdasOuGanhos().ganhos - perdasOuGanhos().perdas && perdasOuGanhos().ganhos - perdasOuGanhos().perdas <= 1000 ,
+        '!border-t-green-600 !text-green-600': 1000 < perdasOuGanhos().ganhos - perdasOuGanhos().perdas && perdasOuGanhos().ganhos - perdasOuGanhos().perdas <= 1500 ,
+        '!border-t-green-800 !text-green-800': 1500 < perdasOuGanhos().ganhos - perdasOuGanhos().perdas && perdasOuGanhos().ganhos - perdasOuGanhos().perdas <= 2000 ,
+        '!border-t-green-900 !text-green-900 animate-pulse': 2000 < perdasOuGanhos().ganhos - perdasOuGanhos().perdas,
+        '!border-t-red-200 !text-red-200':0 > perdasOuGanhos().ganhos - perdasOuGanhos().perdas && perdasOuGanhos().ganhos - perdasOuGanhos().perdas >= -500 ,
+        '!border-t-red-400 !text-red-400':-500 > perdasOuGanhos().ganhos - perdasOuGanhos().perdas && perdasOuGanhos().ganhos - perdasOuGanhos().perdas >= -1000 ,
+        '!border-t-red-600 !text-red-600':-1000 > perdasOuGanhos().ganhos - perdasOuGanhos().perdas && perdasOuGanhos().ganhos - perdasOuGanhos().perdas >= -1500 ,
+        '!border-t-red-800 !text-red-800':-1500 > perdasOuGanhos().ganhos - perdasOuGanhos().perdas && perdasOuGanhos().ganhos - perdasOuGanhos().perdas >= -2000 ,
+        '!border-t-red-900 !text-red-900 animate-pulse':-2000 > perdasOuGanhos().ganhos - perdasOuGanhos().perdas}"
+     >
+        <p class="!text-white pr-2">Saldo: {{perdasOuGanhos().ganhos > perdasOuGanhos().perdas ? '📈' : perdasOuGanhos().ganhos < perdasOuGanhos().perdas ? '📉': '📊'}}</p>
+        <p class="underline">{{perdasOuGanhos().ganhos - perdasOuGanhos().perdas}}</p>
     </div>
 </div>
