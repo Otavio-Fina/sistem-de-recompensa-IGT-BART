@@ -19,7 +19,9 @@ export class IGTComponent implements AfterViewInit {
   private jsConfetti!: JSConfetti;
 
   ngAfterViewInit() {
-    this.jsConfetti = new JSConfetti();
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+      this.jsConfetti = new JSConfetti();
+    }
   }
 
   ProfitAndLooseConst = ProfitAndLoose
@@ -47,7 +49,7 @@ export class IGTComponent implements AfterViewInit {
 
     gsap.to(elemento, {
       duration: 0.5,
-      delay: 1,
+      delay: 1.5,
       onStart: () => {
         elemento.classList.add(classeRemove);
         elemento.classList.remove(classeAdd);
@@ -75,8 +77,8 @@ export class IGTComponent implements AfterViewInit {
   dispararConfete(emojiList: Array<any>) {
     this.jsConfetti.addConfetti({
     emojis: emojiList,
-    emojiSize: 40,
-    confettiNumber: 2
+    emojiSize: 100,
+    confettiNumber: 4
   });
   }
 
@@ -94,6 +96,7 @@ export class IGTComponent implements AfterViewInit {
         const randomNumber = Math.floor(Math.random() * 10) + 2;
         const isProofitOrLoose = Math.floor(Math.random() * 10) + 1;
         const imgElemento = document.querySelector('.img' + (indexDaImg + 1)) as HTMLElement;
+        const glowElemento = document.querySelector('.glow') as HTMLElement;
 
         
 
@@ -104,8 +107,7 @@ export class IGTComponent implements AfterViewInit {
           this.animarClasse(imgElemento,'border-card-opaco-loose', 'border-card-opaco');
 
           if (indexDaImg === indexClicado) {
-            let emoji = emojiList.loose[Math.floor(Math.random() * emojiList.loose.length)];
-            this.dispararConfete(emoji);
+            this.animarClasse(glowElemento, 'glow-effect-loose', 'glow-effect');
             this.animarClasse(imgElemento, '!scale-110', 'scale-100');
             this.perdasOuGanhos.update(valor => ({
               ganhos: valor.ganhos,
@@ -121,6 +123,7 @@ export class IGTComponent implements AfterViewInit {
           if (indexDaImg === indexClicado) {
             let emoji = emojiList.gain[Math.floor(Math.random() * emojiList.gain.length)];
             this.dispararConfete(emoji);
+            this.animarClasse(glowElemento, 'glow-effect-gain', 'glow-effect');
             this.animarClasse(imgElemento, '!scale-110', 'scale-100');
             this.perdasOuGanhos.update(valor => ({
               ganhos: valor.ganhos + (randomNumber * 100),

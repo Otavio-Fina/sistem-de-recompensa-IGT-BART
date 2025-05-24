@@ -9,5 +9,5 @@ import { EstrelinhasComponent } from './components/estrelinhas/estrelinhas.compo
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'site-das-probabilidades-pra-fefe';
+  title = 'teste igt';
 }

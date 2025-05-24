@@ -3,3 +3,19 @@
     box-shadow: 
         0px 0px 20vh 10vh #ffffff;
 }
+
+.glow-effect-gain {
+
+    box-shadow: 
+        0px 0px 20vh 10vh rgba(129, 255, 97, 0.5);
+}
+
+.glow-effect-loose {
+
+    box-shadow: 
+        0px 0px 20vh 10vh rgba(236, 68, 68, 0.5);
+}
+
+.glow {
+  transition: all 0.5s ease-in-out;
+}
